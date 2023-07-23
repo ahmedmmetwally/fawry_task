@@ -24,10 +24,10 @@ public class LoginPage {
 
 
 
-    public void Login(String Name , String Pass) throws InterruptedException {
+    public void Login(String name , String pass) throws InterruptedException {
         Thread.sleep(1000);
-        usernameInput.sendKeys(Name);
-        passwordInput.sendKeys(Pass);
+        usernameInput.sendKeys(name);
+        passwordInput.sendKeys(pass);
         loginButton.click();
     }
 }

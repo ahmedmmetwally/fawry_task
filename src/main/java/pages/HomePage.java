@@ -21,7 +21,7 @@ public class HomePage {
 //
 
   public void addNewCatalog() throws InterruptedException {
-      Thread.sleep(4000);
+      Thread.sleep(2000);
     catalogButton.click();
     System.out.println("Catalog button is pressed");
 //      Thread.sleep(7000);
