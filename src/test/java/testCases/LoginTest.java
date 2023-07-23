@@ -74,7 +74,7 @@ public class LoginTest {
         System.out.println(jsonDataReader.englishNAme);
     }
 
-    @Test(priority = 3)
+    @Test(priority =5)
     public void deleteFirstItem() throws InterruptedException {
         DeleteFirstItemPage deleteFirstItemPage = new DeleteFirstItemPage(driver);
         deleteFirstItemPage.deleteItem();
