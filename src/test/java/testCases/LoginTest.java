@@ -3,7 +3,6 @@ package testCases;
 import data.JsonDataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,9 +12,6 @@ import org.testng.annotations.Test;
 import pages.*;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginTest {
     WebDriver driver;
@@ -52,31 +48,33 @@ public class LoginTest {
         HomePage homePage = new HomePage(driver);
         homePage.addNewCatalog();
     }
+
     //using @DataProvider Annotation
     @DataProvider(name = "addCategory")
     public static Object[][] addCategoryNamesData(){
-        return new Object[][]{{"ali"}};
+        return new Object[][]{{"ahmed","متولى"}};
     }
     //addNewCategory
     @Test(priority = 3,dataProvider = "addCategory")
-    public void addNewCategoryNames(String name) throws InterruptedException{
+    public void addNewCategoryNames(String enName,String arName) throws InterruptedException{
         AddNewCategoryPage addNewCategoryPage=new AddNewCategoryPage(driver);
-        addNewCategoryPage.addCategoryName(name);
+        addNewCategoryPage.addCategoryName(enName,arName);
 
     }
-    // using jsonData
-   // funtion to editFirstItem
-    @Test(priority = 4)
+/*//     using jsonData
+//    funtion to editFirstItem onlyyyyyyyyyyyyyyyyyyyyyyy
+    @Test(priority = 5)
     public void editFirstItem() throws InterruptedException, IOException, ParseException {
         jsonDataReader.jsonReaderForEditFirstItem();
         EditFirstItemPage editFirstItemPage = new EditFirstItemPage(driver);
-        editFirstItemPage.editItem(jsonDataReader.englishNAme, jsonDataReader.arabicName.toString());
+        editFirstItemPage.editItem(jsonDataReader.englishNAme, jsonDataReader.arabicName);
         System.out.println(jsonDataReader.englishNAme);
-    }
+    }*/
 
-    @Test(priority =5)
-    public void deleteFirstItem() throws InterruptedException {
-        DeleteFirstItemPage deleteFirstItemPage = new DeleteFirstItemPage(driver);
-        deleteFirstItemPage.deleteItem();
+    //to delete item shoud be in the first page ..............
+    @Test(priority =4)
+    public void deleteCat() throws InterruptedException {
+        DeleteCategory deleteCategory = new DeleteCategory(driver);
+        deleteCategory.deleteItem();
     }
 }

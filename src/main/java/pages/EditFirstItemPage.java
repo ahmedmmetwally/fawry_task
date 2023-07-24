@@ -18,10 +18,10 @@ public class EditFirstItemPage {
    @FindBy(xpath = "//*[@id=\"itemContainerother\"]/tbody/tr[1]/td[3]/div[1]/div[1]/div[1]/a")
     WebElement editButton;
 
-   @FindBy(xpath = "//*[@id=\"name_enedit6373822e185795a044042912\"]")
+   @FindBy(xpath = "//*[@id=\"name_enedit63738230185795a04404292a\"]")
    WebElement editEnglishTextForm;
 
-    @FindBy(xpath = "//*[@id=\"name_aredit6373822e185795a044042912\"]")
+    @FindBy(xpath = "//*[@id=\"name_aredit63738230185795a04404292a\"]")
     WebElement editArabicTextForm;
 
     @FindBy(xpath = "//*[@id=\"edit-category\"]/div/input")
@@ -30,15 +30,16 @@ public class EditFirstItemPage {
     public void editItem(String english,String arabic) throws InterruptedException {
         Thread.sleep(3000);
         editButton.click();
-        editEnglishTextForm.clear();
         Thread.sleep(1000);
+        editEnglishTextForm.clear();
         editEnglishTextForm.sendKeys(english);
         System.out.println("edit English Name is success"+arabic);
         Thread.sleep(1000);
         editArabicTextForm.clear();
       //  editArabicTextForm.sendKeys(arabic);
         //js.executeScript("document.getElementById('name_aredit6373822e185795a044042912').value='احمد متولى '");
-        js.executeScript("arguments[0].value='تيست'", editArabicTextForm);
+       js.executeScript("arguments[0].value='تيست'", editArabicTextForm);
+       // js.executeScript("arguments[0].setAttribute('value','"+ arabic +"')",editArabicTextForm);
         System.out.println("edit arabic Name is success");
         Thread.sleep(1000);
         editDoneButton.click();

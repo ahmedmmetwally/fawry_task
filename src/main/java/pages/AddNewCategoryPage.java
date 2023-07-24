@@ -27,16 +27,17 @@ public class AddNewCategoryPage {
 
     @FindBy(className = "submit-branch")
     private WebElement donButton;
-
-    public void addCategoryName(String english) throws InterruptedException {
+   // public static String test;
+    public void addCategoryName(String english,String ArbName) throws InterruptedException {
         Thread.sleep(7000);
+       //  test=english;
         addNewCategoryButton.click();
         System.out.println("AddNewCategory button is pressed");
         addEnglishName.sendKeys(english);
         System.out.println("Add English Name is success");
         Thread.sleep(2000);
-        //addArabicName.sendKeys("ععععععععععع");
-        js.executeScript("arguments[0].value='تمام'", addArabicName);
+       // js.executeScript("arguments[0].value='تمام'", addArabicName);
+        js.executeScript("arguments[0].setAttribute('value','"+ ArbName +"')",addArabicName);
         System.out.println("Add arabic Name is success");
         Thread.sleep(3000);
         donButton.click();
