@@ -28,7 +28,9 @@ public class AddNewCategoryPage {
     @FindBy(className = "submit-branch")
     private WebElement donButton;
    // public static String test;
+    public static String forDelete;
     public void addCategoryName(String english,String ArbName) throws InterruptedException {
+        forDelete=ArbName;
         Thread.sleep(7000);
        //  test=english;
         addNewCategoryButton.click();

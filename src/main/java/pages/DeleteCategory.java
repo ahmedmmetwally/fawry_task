@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+import static pages.AddNewCategoryPage.forDelete;
+
 
 public class DeleteCategory {
 
@@ -32,7 +34,8 @@ public class DeleteCategory {
         for (int s = 1; s < categoryElementList.size() + 1; s++) {
             categoryElement = driver.findElement(By.cssSelector("#itemContainerother > tbody tr:nth-child(" + s + ") td:nth-child(1) h2"));
             String val = categoryElement.getText();
-            if (val.equals("LGNairaTV")) {
+//            if (val.equals("LGNairaTV")) {
+            if (val.equals(forDelete)) {
                 index = s;
                 System.out.println("are the text is delete  :" + categoryElement.getText());
                 System.out.println("the index of search it   is :" + index);
