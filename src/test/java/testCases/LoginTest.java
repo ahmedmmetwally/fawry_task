@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -34,7 +35,6 @@ public class LoginTest {
     }
 
     /////using jsonData
-    // function to login
     @Test(priority = 1)
     public void Login() throws InterruptedException, IOException, ParseException {
         jsonDataReader.jsonReaderForLogin();
@@ -49,32 +49,39 @@ public class LoginTest {
         homePage.addNewCatalog();
     }
 
+
     //using @DataProvider Annotation
     @DataProvider(name = "addCategory")
-    public static Object[][] addCategoryNamesData(){
-        return new Object[][]{{"ahmed","متولى"}};
+    public static Object[][] addCategoryNamesData() {
+        return new Object[][]{{"ahmed", "متولى"}};
     }
+
     //addNewCategory
-    @Test(priority = 3,dataProvider = "addCategory")
-    public void addNewCategoryNames(String enName,String arName) throws InterruptedException{
-        AddNewCategoryPage addNewCategoryPage=new AddNewCategoryPage(driver);
-        addNewCategoryPage.addCategoryName(enName,arName);
+    @Test(priority = 3, dataProvider = "addCategory")
+    public void addNewCategoryNames(String enName, String arName) throws InterruptedException {
+        AddNewCategoryPage addNewCategoryPage = new AddNewCategoryPage(driver);
+        addNewCategoryPage.addCategoryName(enName, arName);
 
     }
-/*//     using jsonData
-//    funtion to editFirstItem onlyyyyyyyyyyyyyyyyyyyyyyy
-    @Test(priority = 5)
-    public void editFirstItem() throws InterruptedException, IOException, ParseException {
-        jsonDataReader.jsonReaderForEditFirstItem();
-        EditFirstItemPage editFirstItemPage = new EditFirstItemPage(driver);
-        editFirstItemPage.editItem(jsonDataReader.englishNAme, jsonDataReader.arabicName);
-        System.out.println(jsonDataReader.englishNAme);
-    }*/
 
-    //to delete item shoud be in the first page ..............
-    @Test(priority =4)
+    //     using jsonData
+    @Test(priority = 4)
+    public void editCertinItem() throws InterruptedException, IOException, ParseException {
+        jsonDataReader.jsonReaderForEditFirstItem();
+        EditCategoryPage editCategoryPage = new EditCategoryPage(driver);
+        editCategoryPage.editItem(jsonDataReader.englishNAme, jsonDataReader.arabicName);
+    }
+
+//    to delete item shoud be in the first page ..............
+    @Test(priority = 5)
     public void deleteCat() throws InterruptedException {
         DeleteCategory deleteCategory = new DeleteCategory(driver);
         deleteCategory.deleteItem();
+    }
+
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
     }
 }
